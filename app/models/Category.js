@@ -3,16 +3,19 @@ const sequelize = require('../database');
 
 class Category extends Sequelize.Model {}
 
-Category.init({
-    name: {
-        type: DataTypes.STRING,
+Category.init(
+    {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     },
-    sequelize,
-    tableName: 'categories',
-}),
-
-(module.exports = sequelize);
-/***
+    {
+        sequelize,
+        tableName: 'categories',
+    }
+);
+/**
  * Voici les champs nécessaires pour le Model
  * name string
  * tableName: 'categories',
