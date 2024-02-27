@@ -8,13 +8,13 @@ const catalogController = {
     productsList: async (req, res) => {
         try {
             // todo, ici il faudra les vrais produits et catégories de la db
-            const products = [];
-            // console.log('a ', products);
+            const products = await Product.findAll();
+            console.log('products ', products);
 
             const categories = await Category.findAll({
                 attributes: ['name'],
             });
-            // console.log('b ', categories);
+            // console.log('categories ', categories);
 
             res.render('shop', {
                 categories,
