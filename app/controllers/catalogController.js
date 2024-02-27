@@ -10,7 +10,7 @@ const catalogController = {
         try {
             // todo, ici il faudra les vrais produits et catégories de la db
             const products = await Product.findAll();
-            console.log('products ', products);
+            console.log('products ', {products});
 
             const categories = await Category.findAll({
                 attributes: ['id', 'name'],
@@ -30,8 +30,8 @@ const catalogController = {
     category: async (req, res) => {
         // todo, il faut récupérer la catégorie en fonction de l'id présent dans l'url et la passer à la vue
         try {
-            const { id } = req.params;
-            // console.log('name ', id);
+            const id = parseInt(req.params.category_id);
+            // console.log('category_id ', typeof id);
             const category = await Category.findByPk(id, {
                 include: [
                     {
@@ -41,11 +41,9 @@ const catalogController = {
                 ],
             });
             if (!category) {
-                return res.status(404).render('404');
+                return res.redirect('/shop');
             }
-            console.log('category ', category);
-            // !! Je ne comprend pas pourquoi category ne passe pas dans ma vue ejs
-            res.render('category', category);
+            res.render('category', { category });
         } catch (error) {
             console.log(error);
             res.status(500).send('Server Error');

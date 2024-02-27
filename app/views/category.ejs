@@ -1,7 +1,5 @@
-<!-- <pre><code><p>category</p><%= JSON.stringify(category, null, 2) %></code></pre> -->
-
+<!-- <pre><code><%= JSON.stringify(category, null, 2) %></code></pre> -->
 <%- include ('partials/nav') %>
-
 <div class="breadcrumbs">
     <div class="container">
         <a href="/shop">Home</a>
@@ -9,28 +7,29 @@
         <span>Shop</span>
     </div>
 </div>
-
 <div class="products-section container">
     <div class="sidebar">
-        <h3 class="mt-3"><%- category.name %></h3>
+        <!-- todo - Insérer ici le nom de la catégorie -->
+        <h3 class="mt-3"><%= category.name %></h3>
     </div>
 
     <div>
+        <% category.products.forEach(product => { %>
+
         <div class="products text-center">
-
             <!-- todo - Dynamiser cette liste -->
-
             <div class="product">
-                <a href="/product/1">
-                    <img src="/img/macbook-pro.png" alt="Nom du produit" />
+                <a href="/product/<%= product.id %>">
+                    <img src="<%= product.image %>" alt="<%= product.title %>>" />
                 </a>
-                <a href="/product/1">
-                    <div class="product-name">Nom du Produit</div>
+                <a href="/product/<%= product.id %>">
+                    <div class="product-name"><%= product.title %></div>
                 </a>
-                <div class="product-price">€2500</div>
+                <div class="product-price"><%= product.price %></div>
             </div>
-
         </div>
+
+        <% }) %>
     </div>
 </div>
 
