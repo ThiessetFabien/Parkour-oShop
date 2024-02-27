@@ -1,5 +1,5 @@
 <!-- <pre><code><p>categories</p><%= JSON.stringify(categories, null, 2) %></code></pre> -->
-<pre><code><p>products</p><%= JSON.stringify(products, null, 2) %></code></pre>
+<!-- <pre><code><p>products</p><%= JSON.stringify(products, null, 2) %></code></pre> -->
 
 <%- include ('partials/nav') %>
 
@@ -19,7 +19,7 @@
             <!-- todo - Dynamiser cette liste -->
             <% categories.forEach(category => { %>
             <li>
-                <a href="/category/<%= category.name %>">
+                <a href="/category/<%= category.id %>">
                     <%= category.name %>
                 </a>
             </li>
