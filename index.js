@@ -18,9 +18,17 @@ app.use(
     session({
         saveUninitialized: true,
         resave: true,
-        secret: 'Un secret pour signer les id de sessions',
+        secret: process.env.SESSION_SECRET,
     })
 );
+
+app.use((req, res, next) => {
+    if (req.session.user) {
+        res.locals.user = req.session.user;
+    }
+    next();
+});
+
 app.use(loadUserToLocals);
 
 // Setup view engine

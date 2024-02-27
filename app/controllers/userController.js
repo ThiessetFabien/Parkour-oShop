@@ -21,13 +21,21 @@ const userController = {
             }
 
             // verifier si password correspond à password confirm
-            console.log('mdp identiques ', password !== passwordConfirm);
+            console.log('mdp identiques ', password === passwordConfirm);
             if (password !== passwordConfirm) {
                 return res.render('register', {
                     errorMessage: 'Les mots de passe ne correspondent pas',
                 });
             }
-
+            const userExist = await User.findOne({
+                name: `${this.name} ${this.lastname}`,
+                email: this.email,
+            });
+            if (userExist) {
+                return res.render('register', {
+                    errorMessage: 'Ce compte existe déjà',
+                });
+            }
             // hash password
             const salt = await bcrypt.genSalt(15);
             // console.log('salt ', salt);

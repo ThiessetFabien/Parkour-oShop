@@ -15,7 +15,7 @@ router.get('/', catalogController.index);
 // !! page /shop, vous travaillez dans ce controller
 router.get('/shop', catalogController.productsList);
 
-// Affichage d'une catégorie et des produits associés 
+// Affichage d'une catégorie et des produits associés
 router.get('/category/:category_id', catalogController.category);
 
 // Page de détail d'un produit
