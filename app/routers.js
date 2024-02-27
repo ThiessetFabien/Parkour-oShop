@@ -19,7 +19,7 @@ router.get('/shop', catalogController.productsList);
 router.get('/category/:category_id', catalogController.category);
 
 // Page de détail d'un produit
-router.get('/product/:id', catalogController.product);
+router.get('/product/:product_id', catalogController.product);
 
 // Affichage page formulaire de login
 router.get('/login', sessionController.index);
