@@ -30,7 +30,7 @@ Product.init({
     sequelize,
     tableName: 'products',
 }),
-    /**
+/**
      * Voici les champs nécessaires pour faire le Model
      * category_id int
      * ref string
@@ -41,4 +41,4 @@ Product.init({
      * tableName: 'products',
      */
 
-    (module.exports = Product);
+(module.exports = Product);
