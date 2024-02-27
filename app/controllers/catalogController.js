@@ -9,13 +9,17 @@ const catalogController = {
         try {
             // todo, ici il faudra les vrais produits et catégories de la db
             const products = [];
-            const categories = [];
+            // console.log('a ', products);
 
-            res.render('shop', { 
-                categories,
-                products 
+            const categories = await Category.findAll({
+                attributes: ['name'],
             });
+            // console.log('b ', categories);
 
+            res.render('shop', {
+                categories,
+                products,
+            });
         } catch (error) {
             console.log(error);
             res.status(500).send('Server Error');
