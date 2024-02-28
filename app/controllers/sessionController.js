@@ -40,7 +40,7 @@ const sessionController = {
             );
             // console.log('validation password ', passwordIsValid);
             if (!passwordIsValid) {
-                //      Si le mot de passe est incorrect : on envoie un message d'erreur dans un objet:  {error: "Utilisateur ou mot de passe incorrect"} et on render `login` en lui passant l'erreur
+                // Si le mot de passe est incorrect : on envoie un message d'erreur dans un objet:  {error: "Utilisateur ou mot de passe incorrect"} et on render `login` en lui passant l'erreur
                 return res.render('login', {
                     error: 'Utilisateur ou mot de passe incorrect',
                 });
@@ -55,7 +55,7 @@ const sessionController = {
                 },
             };
             req.session.user = formattedUser;
-            console.log('a ', formattedUser);
+            // console.log('a ', formattedUser);
 
             // console.log('c ', user.id);
             // On enlève le mot de passe de la session.
@@ -70,6 +70,7 @@ const sessionController = {
 
     logout: (req, res) => {
         // !! Votre code ici
+        req.session.user = null;
         res.redirect('/');
     },
 };
